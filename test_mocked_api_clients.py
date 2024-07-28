@@ -4,6 +4,7 @@ Can I test mocked API clients with Hypothesis?
 from unittest.mock import Mock, patch
 import requests
 from hypothesis import given, strategies as st
+from hypothesis.provisional import urls, domains
 
 class APIClient:
     def __init__(self, url):
@@ -19,9 +20,14 @@ class APIClient:
 """
 
 
-@given(path=st.text(), base_url=st.text())
+@given(path=domains(), base_url=st.text())
 def test_get_calls_requests_get(path: str, base_url:str):
     client = APIClient(base_url)
     with patch("requests.get") as mock_get:
         client.get(path)
         mock_get.assert_called_with(f"{base_url}/{path}")
+
+"""
+- Can you use hypothesis strategies to generate the expected response?
+- Can you use hypothesis strategies to generate well formed urls?
+"""
