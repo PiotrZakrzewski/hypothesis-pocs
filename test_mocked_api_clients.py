@@ -17,6 +17,7 @@ class APIClient:
 - if we submit a well formed and valid request ( usualy based on some assumptions about the wrapped API, docs, OpenAPI docs, reverse engineering)
 - hardcoding the expected response (again based on some assumptions)
 - checks if given client methods were called with right params
+- Can you use hypothesis strategies to generate well formed urls?
 """
 
 
@@ -29,5 +30,4 @@ def test_get_calls_requests_get(path: str, base_url:str):
 
 """
 - Can you use hypothesis strategies to generate the expected response?
-- Can you use hypothesis strategies to generate well formed urls?
 """
